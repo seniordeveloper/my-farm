@@ -1,0 +1,32 @@
+<div class="modal-header" *ngIf="title">
+    <h4 class="modal-title">{{title}}</h4>
+</div>
+<div class="modal-body body-align">
+    <form #form="ngForm">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label class="required">{{'animal.animals.addEditAnimal.name' | transloco}}</label>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    required
+                    trim
+                    name="name"
+                    placeholder="{{'animal.animals.addEditAnimal.name' | transloco}}"
+                    [(ngModel)]="model.name"
+                />
+            </div>
+        </div>
+    </form>
+</div>
+<div class="modal-footer">
+    <div *ngIf="!acceptOnly">
+        <button type="button" class="btn btn-default" (click)="cancel()">
+            {{cancelButtonText}}
+        </button>
+    </div>
+    <button id="acceptButton" type="button" class="btn {{ acceptButtonClass }}" (click)="submit()" [disabled]="!isValid()">
+        {{acceptButtonText}}
+    </button>
+</div>

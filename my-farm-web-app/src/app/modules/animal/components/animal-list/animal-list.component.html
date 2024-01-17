@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-header d-flex ms-0">
+        <h5 class="card-title mb-0 pt-1">
+            {{'animal.animals.title' | transloco}}
+        </h5>
+    </div>
+
+    <div class="card-body">
+        <button class="btn btn-primary" (click)="onAddNewOrEditAnimal()">Add animal</button>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngIf="this.animals?.length">
+                    <tr *ngFor="let animal of this.animals" >
+                        <th scope="row">{{ animal.id }}</th>
+                        <td><a href="javascript:void(0)" class="link-primary" (click)="onAddNewOrEditAnimal(animal);">{{ animal.name }}</a></td>
+                        <td><button type="button" class="btn-close btn-danger" aria-label="Close" (click)="openDeletePopup(animal)"></button></td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>

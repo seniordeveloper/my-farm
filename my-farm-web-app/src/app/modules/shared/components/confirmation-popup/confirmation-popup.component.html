@@ -1,0 +1,16 @@
+<div class="modal-header" *ngIf="title">
+    <h4 class="modal-title">{{title}}</h4>
+</div>
+<div class="modal-body body-align">
+    <p class="body-text" *ngFor="let line of bodyText">{{line}}</p>
+</div>
+<div class="modal-footer">
+    <div *ngIf="!acceptOnly">
+        <button type="button" class="btn btn-default" (click)="cancel()">
+            {{cancelButtonText}}
+        </button>
+    </div>
+    <button id="acceptButton" type="button" class="btn {{ acceptButtonClass }}" (click)="accept()">
+        {{acceptButtonText}}
+    </button>
+</div>

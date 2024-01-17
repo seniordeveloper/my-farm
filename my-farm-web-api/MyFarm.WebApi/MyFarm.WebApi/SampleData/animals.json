@@ -1,0 +1,19 @@
+[
+  {
+    "Id": 1,
+    "Name": "Fox"
+  },
+  {
+    "Id": 2,
+    "Name": "Alligator"
+
+  },
+  {
+    "Id": 3,
+    "Name": "Zebra"
+  },
+  {
+    "Id": 4,
+    "Name": "Bear"
+  }
+]
