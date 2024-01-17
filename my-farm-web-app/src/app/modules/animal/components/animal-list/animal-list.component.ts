@@ -70,7 +70,7 @@ export class AnimalListComponent extends BaseApiComponent implements OnInit {
                 (action: {
                     data: AnimalModel
                 }) => {
-                    console.log(action.data);
+                    this.animals = [...this.animals, action.data]
                 }
             );
     }
@@ -101,13 +101,18 @@ export class AnimalListComponent extends BaseApiComponent implements OnInit {
     async onAddNewOrEditAnimal(data: AnimalModel = null): Promise<void> {
         const modalRef = this.modalService.open(AnimalEditComponent);
 
+        data = data ?? { id: 0, name: null } as AnimalModel;
+        const creatingnew = data.id <= 0;
+
         modalRef.componentInstance.title = translate(
-            "animal.animals.addEditAnimal.addTitle"
+            creatingnew
+                ? "animal.animals.addEditAnimal.addTitle"
+                : "animal.animals.addEditAnimal.editTitle"
         );
 
         modalRef.componentInstance.acceptButtonText = 'Submit';
 
-        modalRef.componentInstance.model = data ?? { id: 0, name: null } as AnimalModel;
+        modalRef.componentInstance.model = data;
 
         const model = await modalRef.result as AnimalModel;
         if (model) {
